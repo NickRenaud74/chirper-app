@@ -34,10 +34,11 @@ function saveAnswer(answer) {
     }
 }
 
-export function saveQuestionAnswer({answer, id}) {
+export function saveQuestionAnswer({answer, qid}) {
     return async (dispatch, getState) => {
         const { authedUser } = getState()
-        const questionAnswer = {answer, id, authedUser}
+        const questionAnswer = { answer, qid, authedUser }
+        console.log('from actions: ', questionAnswer)
         await _saveQuestionAnswer(questionAnswer)
         dispatch(saveAnswer(questionAnswer))
     }

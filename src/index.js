@@ -6,15 +6,19 @@ import reducer from './reducers'
 import middleware from './middleware'
 import {BrowserRouter} from 'react-router-dom'
 import './styles/index.css';
+import { theme } from './styles/theme'
+import {ThemeProvider} from '@material-ui/core'
 import App from './components/App';
 
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root')
 );

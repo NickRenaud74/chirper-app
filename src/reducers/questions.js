@@ -14,15 +14,15 @@ export default function questions(state = {}, action) {
                 [question.id]: question
             }
         case SAVE_ANSWER:
-            const { answer, id, authedUser } = action.answer
+            const { answer, qid, authedUser } = action.answer
             
             return {
                 ...state,
-                [id]: {
-                    ...state[id],
+                [qid]: {
+                    ...state[qid],
                     [answer]: {
-                        ...state[answer],
-                        votes: state[answer].votes.concat([authedUser])
+                        ...state[qid][answer],
+                        votes: state[qid][answer].votes.concat([authedUser])
                     }
                 }
             }

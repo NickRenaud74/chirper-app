@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { useStyles } from '../styles/Questions'
+import { useStyles } from '../styles/cardStyles'
 import { Link } from 'react-router-dom'
 import { CardContent, CardActions, Button, Typography } from '@material-ui/core'
 

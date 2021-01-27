@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { useStyles } from '../styles/Questions'
+import { useStyles } from '../styles/cardStyles'
 import { Card, CardHeader, Avatar, Grid } from '@material-ui/core'
 
 function CardTemplate({ id, component }) {
@@ -24,7 +24,7 @@ function CardTemplate({ id, component }) {
             />
             <Grid container>
                 <Grid item xs={4} className={classes.avatarBox} >
-                    <Avatar className={classes.avatar} >NR</Avatar>
+                    <Avatar className={classes.avatar}>NR</Avatar>
                 </Grid>
                 <Grid item xs={8}>
                     <C question={question} />

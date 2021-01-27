@@ -9,6 +9,7 @@ import Dashboard from './Dashboard'
 import CardTemplate from './CardTemplate'
 import { Container } from '@material-ui/core'
 import QuestionPoll from './QuestionPoll'
+import QuestionResults from './QuestionResults'
 
 function App() {
   const authedUser = useSelector(state => state.authedUser)
@@ -33,8 +34,11 @@ function App() {
             <Route path='/leaderboard'>
               <Leaderboard />
             </Route>
-            <Route path='/questions/:questionId'>
+            <Route exact path='/questions/:questionId'>
               <CardTemplate component={QuestionPoll}/>
+            </Route>
+            <Route path='/questions/:questionId/results'>
+              <CardTemplate component={QuestionResults} />
             </Route>
           </Switch>
         </Container>

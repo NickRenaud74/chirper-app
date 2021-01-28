@@ -10,6 +10,7 @@ import CardTemplate from './CardTemplate'
 import { Container } from '@material-ui/core'
 import QuestionPoll from './QuestionPoll'
 import QuestionResults from './QuestionResults'
+import NewQuestion from './NewQuestion'
 
 function App() {
   const authedUser = useSelector(state => state.authedUser)
@@ -30,6 +31,9 @@ function App() {
           <Switch>
             <Route exact path='/'>
               <Dashboard />
+            </Route>
+            <Route path='/add'>
+              <NewQuestion />
             </Route>
             <Route path='/leaderboard'>
               <Leaderboard />

@@ -16,7 +16,7 @@ function Nav() {
                 onChange={handleChange}
             >
                 <Tab label='Home' component={Link} to='/' />
-                <Tab label='New Question' component={Link} to='/new-question' />
+                <Tab label='New Question' component={Link} to='/add' />
                 <Tab label='Leaderboard' component={Link} to='/leaderboard' />
                 <Tab label='Logout' component={Link} to='/' />
             </Tabs>

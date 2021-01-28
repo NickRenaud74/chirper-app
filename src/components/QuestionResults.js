@@ -1,16 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux'
-import { CardContent, Typography, Paper, LinearProgress, Badge } from '@material-ui/core'
-import { useStyles } from '../styles/cardStyles'
+import { CardContent, Typography } from '@material-ui/core'
+import Result from './Result'
 
 function QuestionResults({ question }) {
-    const classes = useStyles()
+    const [userAnswer, setUserAnswer] = useState('')
+    const [showBadge, setShowBadge] = useState(false)
     const authedUser = useSelector(state => state.authedUser)
     const users = useSelector(state => state.users)
 
-    const userAnswer = users[authedUser].answers[question.id]
+    console.log('rendered', userAnswer)
 
-    console.log(userAnswer)
+    useEffect(() => {
+        setUserAnswer(users[authedUser].answers[question.id])
+        if (userAnswer === 'optionTwo') {
+            setShowBadge(true)
+        }
+    }, [authedUser, question.id, userAnswer, users])
 
     function calculatePercentage(option) {
         const total = question.optionOne.votes.length + question.optionTwo.votes.length
@@ -25,25 +31,18 @@ function QuestionResults({ question }) {
     return (
         <CardContent>
             <Typography variant='h5'>Results: </Typography>
-            <Badge color='error' badgeContent={'Your vote'} overlap='circle' invisible>
-                <Paper variant='outlined' className={classes.paper}>
-                    <Typography variant='subtitle2'> {`Would you rather ${question.optionOne.text}?`}</Typography>
-                    <LinearProgress className={classes.bar} variant='determinate' value={optionOnePercent} />
-                    <Typography variant='subtitle2' >
-                        {`${optionOnePercent}% - ${optionOneVotes} ${optionOneVotes === 1 ? 'vote' : 'votes'}`}
-                    </Typography>
-                </Paper>
-            </Badge>
-
-            <Badge color='error' badgeContent={'Your vote'} overlap='circle'>
-                <Paper variant='outlined' className={classes.paper}>
-                    <Typography variant='subtitle2'> {`Would you rather ${question.optionTwo.text}?`}</Typography>
-                    <LinearProgress className={classes.bar} variant='determinate' value={optionTwoPercent} />
-                    <Typography variant='subtitle2'>
-                        {`${optionTwoPercent}% - ${optionTwoVotes} ${optionTwoVotes === 1 ? 'vote' : 'votes'}`}
-                    </Typography>
-                </Paper>
-            </Badge>
+            <Result
+                option={question.optionOne.text}
+                percentage={optionOnePercent}
+                votes={optionOneVotes}
+                showBadge={showBadge}
+            />
+            <Result
+                option={question.optionTwo.text}
+                percentage={optionTwoPercent}
+                votes={optionTwoVotes}
+                showBadge={!showBadge}
+            />
         </CardContent >
     )
 }

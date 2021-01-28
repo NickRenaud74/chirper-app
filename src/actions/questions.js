@@ -19,10 +19,10 @@ function addQuestion(question) {
     }
 }
 
-export function saveQuestion(question) {
+export function saveQuestion({optionOneText, optionTwoText}) {
     return async (dispatch, getState) => {
         const { authedUser } = getState()
-        const savedQuestion = await _saveQuestion({ question, author: authedUser })
+        const savedQuestion = await _saveQuestion({ optionOneText, optionTwoText, author: authedUser })
         dispatch(addQuestion(savedQuestion))
     }
 }

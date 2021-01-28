@@ -41,6 +41,9 @@ export const useStyles = makeStyles(theme => ({
     },
     badge: {
         padding: '8px',
+    },
+    vote: {
+        backgroundColor: '#b8ffef'
     }
 }))
 

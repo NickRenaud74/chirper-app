@@ -1,10 +1,7 @@
 import { _getUsers, _getQuestions } from '../utils/_DATA'
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
-import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
-
-const authedUser = 'sarahedo'
 
 export function getData() {
     return async (dispatch) => {
@@ -13,7 +10,6 @@ export function getData() {
         const questions = await _getQuestions()
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
-        dispatch(setAuthedUser(authedUser))
         dispatch(hideLoading())
     }
 }

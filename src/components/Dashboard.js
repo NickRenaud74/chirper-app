@@ -36,7 +36,6 @@ function Dashboard() {
                 )}
             </List>
         </Container>
-
     )
 }
 

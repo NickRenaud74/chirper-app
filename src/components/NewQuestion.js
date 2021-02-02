@@ -25,16 +25,16 @@ function NewQuestion() {
         dispatch(saveQuestion({ optionOneText: optionOne, optionTwoText: optionTwo }))
         history.push('/')
     }
-
+    
     const classes = useStyles()
     return (
-        <Card raised className={classes.root} onSubmit={handleSubmit}>
+        <Card raised className={classes.root}>
             <CardHeader
                 title='Create A New Question'
                 className={classes.cardHeader}
             />
             <Typography variant='h6' style={{margin: '1rem'}}>Would you rather ... </Typography>
-            <form className={classes.form}>
+            <form className={classes.form} onSubmit={handleSubmit}>
                 <TextField
                     required 
                     fullWidth

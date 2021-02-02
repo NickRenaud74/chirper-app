@@ -9,8 +9,6 @@ function QuestionResults({ question }) {
     const authedUser = useSelector(state => state.authedUser)
     const users = useSelector(state => state.users)
 
-    console.log('rendered', userAnswer)
-
     useEffect(() => {
         setUserAnswer(users[authedUser].answers[question.id])
         if (userAnswer === 'optionTwo') {

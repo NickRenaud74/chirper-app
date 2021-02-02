@@ -9,7 +9,7 @@ function QuestionCard({ question }) {
 
     return (
         <Fragment>
-            <CardContent className={classes.cardContent} >
+            <CardContent className={classes.centerText} >
                 <Typography variant='h6'>Would you rather </Typography>
                 <Typography variant='body2'>{question.optionOne.text}</Typography>
                 <br />
@@ -23,7 +23,9 @@ function QuestionCard({ question }) {
                     variant='contained'
                     component={Link}
                     to={`/questions/${question.id}`}
-                >View Poll</Button>
+                >
+                    View Poll
+                </Button>
             </CardActions>
         </Fragment>
     )

@@ -4,18 +4,34 @@ export const useStyles = makeStyles(theme => ({
     root: {
         margin: '1rem',
     },
+    loadingBar: {
+        backgroundColor: theme.palette.secondary.main,
+        position: 'absolute',
+        height: '3px'
+    },
     cardHeader: {
         backgroundColor: theme.palette.primary.main,
     },
-    avatar: {
+    avatarLg: {
         margin: 'auto',
         width: '140px',
         height: '140px'
     },
+    avatarMed: {
+        margin: 'auto',
+        width: '100px',
+        height: '100px'
+    },
+    avatarSm: {
+        margin: 'auto',
+        width: '50px',
+        height: '50px',
+        backgroundColor: theme.palette.primary.main
+    },
     avatarBox: {
         margin: 'auto'
     },
-    cardContent: {
+    centerText: {
         textAlign: 'center'
     },
     button: {
@@ -44,6 +60,23 @@ export const useStyles = makeStyles(theme => ({
     },
     vote: {
         backgroundColor: '#b8ffef'
-    }
+    },
+    score: {
+        textAlign: 'center',
+        margin: 'auto'
+    },
+    appLogo: {
+        height: '200px',
+        width: '200px',
+        padding: '2rem',
+        margin: 'auto',
+        animationName: '$spin',
+        animationDuration: '20s',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'linear',
+    },
+    '@keyframes spin': {
+        '0%': { transform: 'rotate(0deg)'},
+        '100%': {transform: 'rotate(360deg)'}
+    },
 }))
-

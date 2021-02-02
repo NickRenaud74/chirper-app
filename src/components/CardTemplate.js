@@ -13,7 +13,7 @@ function CardTemplate({ id, component }) {
 
     const questions = useSelector(state => state.questions)
     const question = questions[id]
-    const C = component
+    const Component = component
     const classes = useStyles()
 
     return (
@@ -24,10 +24,10 @@ function CardTemplate({ id, component }) {
             />
             <Grid container>
                 <Grid item xs={4} className={classes.avatarBox} >
-                    <Avatar className={classes.avatar}>NR</Avatar>
+                    <Avatar className={classes.avatarLg}>NR</Avatar>
                 </Grid>
                 <Grid item xs={8}>
-                    <C question={question} />
+                    <Component question={question} />
                 </Grid>
             </Grid>
         </Card>

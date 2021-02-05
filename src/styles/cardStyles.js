@@ -31,6 +31,10 @@ export const useStyles = makeStyles(theme => ({
     avatarBox: {
         margin: 'auto'
     },
+    avatarPicker: {
+        margin: 'auto',
+        justifyContent: 'center'
+    },
     centerText: {
         textAlign: 'center'
     },
@@ -40,6 +44,9 @@ export const useStyles = makeStyles(theme => ({
         '&:hover': {
             backgroundColor: `${theme.palette.secondary.dark} !important`,
         }
+    },
+    createUser: {
+        alignItems: 'center'
     },
     form: {
         margin: '1rem',
@@ -64,6 +71,10 @@ export const useStyles = makeStyles(theme => ({
     score: {
         textAlign: 'center',
         margin: 'auto'
+    },
+    selectUser: {
+        width: '-webkit-fill-available',
+        margin: '15px'
     },
     appLogo: {
         height: '200px',

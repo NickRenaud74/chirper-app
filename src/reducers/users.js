@@ -1,5 +1,6 @@
-import { RECEIVE_USERS } from '../actions/users'
+import { RECEIVE_USERS, CREATE_USER } from '../actions/users'
 import { SAVE_QUESTION, SAVE_ANSWER } from '../actions/questions'
+
 
 export default function users(state = {}, action) {
     switch (action.type) {
@@ -28,6 +29,19 @@ export default function users(state = {}, action) {
                         [qid]: answer
                     }
                 }
+            }
+        case CREATE_USER:
+            const { name, id, avatarUrl } = action.user
+            const newUser = {
+                id,
+                name,
+                avatarUrl,
+                answers: {},
+                questions: []
+            }
+            return {
+                ...state,
+                [id]: newUser
             }
         default:
             return state

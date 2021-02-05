@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import {useStyles } from '../styles/cardStyles'
 import { Card, CardHeader, Button, Select, MenuItem, CardMedia, Typography, ListItemText } from '@material-ui/core'
 import { setAuthedUser } from '../actions/authedUser'
@@ -13,16 +13,15 @@ function Login() {
     const users = useSelector(state => state.users)
     const classes = useStyles()
     const dispatch = useDispatch()
-    const history = useHistory()
 
     function handleChange(e) {
         setUser(e.target.value)
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        dispatch(setAuthedUser(user))
-        history.push('/')
+        await dispatch(setAuthedUser(user))
+        return <Redirect to='/' />
     }
 
     return (

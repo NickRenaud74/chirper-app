@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { getData } from '../actions/shared'
 import { useDispatch, useSelector } from 'react-redux'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import LoadingBar from 'react-redux-loading'
 import { useStyles } from '../styles/cardStyles'
 import { Container } from '@material-ui/core'
@@ -18,24 +18,24 @@ function App() {
   const authedUser = useSelector(state => state.authedUser)
   const dispatch = useDispatch()
   const classes = useStyles()
-  const history = useHistory()
-
-  const loggedIn = authedUser !== null
 
   useEffect(() => {
     dispatch(getData())
   }, [dispatch])
 
-  if (!loggedIn) {
-    history.push('/login')
-  }
+  if (!authedUser) {
+    return <Redirect to='/login' />
+  } 
 
   return (
     <div className="App">
       <LoadingBar className={classes.loadingBar} />
-      <Nav loggedIn={loggedIn} />
+      <Nav />
       <Container maxWidth='sm'>
         <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
           <Route exact path='/'>
             <Dashboard />
           </Route>
@@ -50,9 +50,6 @@ function App() {
           </Route>
           <Route path='/questions/:questionId/results'>
             <CardTemplate component={QuestionResults} />
-          </Route>
-          <Route path='/login'>
-            <Login />
           </Route>
         </Switch>
       </Container>

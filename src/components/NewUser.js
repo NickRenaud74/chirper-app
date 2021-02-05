@@ -5,17 +5,16 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { useStyles } from '../styles/cardStyles'
 import { saveCreateUser } from '../actions/users'
 import { setAuthedUser } from '../actions/authedUser'
-import { useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 
 function NewUser() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [avatarUrl, setAvatarUrl] = useState('')
-    const [toHome, setToHome] = useState(false)
+    const [toDashboard, setToDashboard] = useState(false)
     const classes = useStyles()
     const dispatch = useDispatch()
-    const history = useHistory()
     
 
     function handleChange(e) {
@@ -32,21 +31,20 @@ function NewUser() {
 
     function formatUser(fName, lName) {
         const name = `${fName[0].toUpperCase() + fName.slice(1)} ${lName[0].toUpperCase() + lName.slice(1)}`
-        const id = fName.toLowerCase().concat(lName.toLowerCase())
+        const id = (fName + lName).toLowerCase()
         return {name, id}
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
         const { name, id } = formatUser(firstName, lastName)
-        dispatch(saveCreateUser({ name, id, avatarUrl }))
-        dispatch(setAuthedUser(id))
-        setToHome(id ? true : false)
+        await dispatch(saveCreateUser({ name, id, avatarUrl }))
+        await dispatch(setAuthedUser(id))
+        setToDashboard(true)
     }
 
-    console.log(toHome)
-    toHome && history.push('/')
-
+    toDashboard && <Redirect to='/' />
+        
     return (
         <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}  >

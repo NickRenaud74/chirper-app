@@ -4,7 +4,7 @@ import {useHistory } from 'react-router-dom'
 import {useStyles } from '../styles/cardStyles'
 import { Card, CardHeader, Button, Select, MenuItem, CardMedia, Typography, ListItemText } from '@material-ui/core'
 import { setAuthedUser } from '../actions/authedUser'
-import logo from '../utils/react-logo.png'
+import logo from '../images/react-logo.png'
 import NewUser from './NewUser'
 
 
@@ -14,8 +14,6 @@ function Login() {
     const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
-
-    dispatch(setAuthedUser(null))
 
     function handleChange(e) {
         setUser(e.target.value)
@@ -40,7 +38,13 @@ function Login() {
             />
             <form onSubmit={handleSubmit}>
                 <Typography variant='h6' className={classes.centerText}>Sign in as existing user</Typography>
-                <Select displayEmpty value={user} onChange={handleChange} style={{ width: '-webkit-fill-available', margin: '15px' }}>
+                <Select
+                    displayEmpty
+                    required
+                    value={user}
+                    onChange={handleChange}
+                    className={classes.selectUser}
+                >
                     <MenuItem value='' disabled>Select User</MenuItem>
                     {Object.keys(users).map(user => (
                         <MenuItem key={user} value={users[user].id}>
@@ -48,12 +52,12 @@ function Login() {
                         </MenuItem>
                     ))}
                 </Select>
-                <Typography variant='h6' className={classes.centerText}>OR</Typography>
-                <NewUser />
-                <Button type="submit" variant='contained' className={classes.button}>
-                    Submit
+                <Button type='submit' className={classes.button}>
+                    Login
                 </Button>
+                <Typography variant='h6' className={classes.centerText}>OR</Typography>
             </form>
+            <NewUser />
 
         </Card>
     )

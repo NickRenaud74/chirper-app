@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Container, List, Tab, Tabs } from '@material-ui/core'
 import CardTemplate from './CardTemplate'
-import QuestionCard from './QuestionCard'
+import QuestionCard from './Questions/QuestionCard'
 
 function Dashboard() {
     const [tab, setTab] = useState(0)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { useStyles } from '../styles/cardStyles'
+import { useStyles } from '../styles/styles'
 import { Card, CardHeader, Avatar, Grid } from '@material-ui/core'
 
 function CardTemplate({ id, component }) {
@@ -12,6 +12,7 @@ function CardTemplate({ id, component }) {
     }
 
     const questions = useSelector(state => state.questions)
+    const users = useSelector(state => state.users)
     const question = questions[id]
     const Component = component
     const classes = useStyles()
@@ -24,7 +25,7 @@ function CardTemplate({ id, component }) {
             />
             <Grid container>
                 <Grid item xs={4} className={classes.avatarBox} >
-                    <Avatar className={classes.avatarLg}>NR</Avatar>
+                    <Avatar className={classes.avatarLg} src={users[question.author].avatarURL}></Avatar>
                 </Grid>
                 <Grid item xs={8}>
                     <Component question={question} />

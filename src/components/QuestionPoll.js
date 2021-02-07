@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
 import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Button } from '@material-ui/core'
-import { useStyles } from '../styles/cardStyles'
+import { useStyles } from '../styles/styles'
 import { saveQuestionAnswer } from '../actions/questions'
 import { useHistory } from 'react-router-dom'
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Card, CardHeader, Typography, TextField, Button } from '@material-ui/core'
-import { useStyles } from '../styles/cardStyles'
+import { useStyles } from '../styles/styles'
 import { saveQuestion } from '../actions/questions'
 
 function NewQuestion() {
@@ -25,7 +25,7 @@ function NewQuestion() {
         dispatch(saveQuestion({ optionOneText: optionOne, optionTwoText: optionTwo }))
         history.push('/')
     }
-    
+
     const classes = useStyles()
     return (
         <Card raised className={classes.root}>

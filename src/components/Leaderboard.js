@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useStyles } from '../styles/cardStyles'
+import { useStyles } from '../styles/styles'
 import { Container, Card, Typography, Grid, Avatar, CardHeader, Table, TableBody, TableRow, TableCell } from '@material-ui/core'
 import LooksOneIcon from '@material-ui/icons/LooksOne'
 import LooksTwoIcon from '@material-ui/icons/LooksTwo'
@@ -38,7 +38,7 @@ function Leaderboard() {
                     <Grid container>
                         <Grid item xs={4} className={classes.avatarBox}>
                             {getPosition(index)}
-                            <Avatar className={classes.avatarMed}>NR</Avatar>
+                            <Avatar className={classes.avatarMed} src={users[user].avatarURL}></Avatar>
                         </Grid>
                         <Grid item xs={6}>
                             <CardHeader title={users[user].name} />

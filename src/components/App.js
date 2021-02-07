@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { getData } from '../actions/shared'
 import { useDispatch, useSelector } from 'react-redux'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import LoadingBar from 'react-redux-loading'
-import { useStyles } from '../styles/cardStyles'
+import { useStyles } from '../styles/styles'
 import { Container } from '@material-ui/core'
+import PrivateRoute from './PrivateRoute'
 import Nav from './Nav'
 import Leaderboard from './Leaderboard'
 import Dashboard from './Dashboard'
@@ -13,6 +14,7 @@ import QuestionPoll from './QuestionPoll'
 import QuestionResults from './QuestionResults'
 import NewQuestion from './NewQuestion'
 import Login from './Login'
+import PageNotFound from './PageNotFound'
 
 function App() {
   const authedUser = useSelector(state => state.authedUser)
@@ -23,34 +25,33 @@ function App() {
     dispatch(getData())
   }, [dispatch])
 
-  if (!authedUser) {
-    return <Redirect to='/login' />
-  } 
-
   return (
     <div className="App">
       <LoadingBar className={classes.loadingBar} />
-      <Nav />
+      <Nav authedUser={authedUser} />
       <Container maxWidth='sm'>
         <Switch>
-          <Route path='/login'>
+          <Route exact path='/login'>
             <Login />
           </Route>
-          <Route exact path='/'>
+          <PrivateRoute exact path='/' authedUser={authedUser}>
             <Dashboard />
-          </Route>
-          <Route path='/add'>
+          </PrivateRoute>
+          <PrivateRoute exact path='/add' authedUser={authedUser}>
             <NewQuestion />
-          </Route>
-          <Route path='/leaderboard'>
+          </PrivateRoute>
+          <PrivateRoute exact path='/leaderboard' authedUser={authedUser}>
             <Leaderboard />
-          </Route>
-          <Route exact path='/questions/:questionId'>
+          </PrivateRoute>
+          <PrivateRoute exact path='/questions/:questionId' authedUser={authedUser}>
             <CardTemplate component={QuestionPoll} />
-          </Route>
-          <Route path='/questions/:questionId/results'>
+          </PrivateRoute>
+          <PrivateRoute exact path='/questions/:questionId/results' authedUser={authedUser}>
             <CardTemplate component={QuestionResults} />
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path='*' authedUser={authedUser}>
+            <PageNotFound />
+          </PrivateRoute>
         </Switch>
       </Container>
     </div>

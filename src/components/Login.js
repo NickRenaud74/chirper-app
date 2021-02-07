@@ -1,33 +1,30 @@
-import React, {useState} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import {useStyles } from '../styles/cardStyles'
-import { Card, CardHeader, Button, Select, MenuItem, CardMedia, Typography, ListItemText } from '@material-ui/core'
-import { setAuthedUser } from '../actions/authedUser'
+import React, { useState } from 'react'
+import { Redirect, useLocation } from 'react-router-dom'
+import { useStyles } from '../styles/styles'
+import { Card, CardHeader, CardMedia } from '@material-ui/core'
 import logo from '../images/react-logo.png'
 import NewUser from './NewUser'
+import ExistingUser from './ExistingUser'
 
 
 function Login() {
-    const [user, setUser] = useState('')
-    const users = useSelector(state => state.users)
+    const [toDashboard, setToDashboard] = useState(false)
+    const [expanded, setExpanded] = useState(false)
     const classes = useStyles()
-    const dispatch = useDispatch()
+    const { state } = useLocation()
 
-    function handleChange(e) {
-        setUser(e.target.value)
+    if (toDashboard) {
+        return <Redirect to={state?.from || '/'} />
     }
 
-    async function handleSubmit(e) {
-        e.preventDefault()
-        await dispatch(setAuthedUser(user))
-        return <Redirect to='/' />
-    }
+    const handleExpand = (panel) => (e, isExpanded) => {
+        setExpanded(isExpanded ? panel : false)
+    };
 
     return (
         <Card raised className={classes.root}>
             <CardHeader
-                title={'Welcome to Would You Rather!'}
+                title={'Welcome to the Would You Rather App!'}
                 className={`${classes.cardHeader} ${classes.centerText}`}
             />
             <CardMedia
@@ -35,29 +32,16 @@ function Login() {
                 src={logo}
                 className={classes.appLogo}
             />
-            <form onSubmit={handleSubmit}>
-                <Typography variant='h6' className={classes.centerText}>Sign in as existing user</Typography>
-                <Select
-                    displayEmpty
-                    required
-                    value={user}
-                    onChange={handleChange}
-                    className={classes.selectUser}
-                >
-                    <MenuItem value='' disabled>Select User</MenuItem>
-                    {Object.keys(users).map(user => (
-                        <MenuItem key={user} value={users[user].id}>
-                            <ListItemText>{users[user].name}</ListItemText>
-                        </MenuItem>
-                    ))}
-                </Select>
-                <Button type='submit' className={classes.button}>
-                    Login
-                </Button>
-                <Typography variant='h6' className={classes.centerText}>OR</Typography>
-            </form>
-            <NewUser />
-
+            <ExistingUser
+                setToDashboard={setToDashboard}
+                handleExpand={handleExpand}
+                expanded={expanded}
+            />
+            <NewUser
+                setToDashboard={setToDashboard}
+                handleExpand={handleExpand}
+                expanded={expanded}
+            />
         </Card>
     )
 }

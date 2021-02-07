@@ -7,10 +7,11 @@ import QuestionCard from './QuestionCard'
 function Dashboard() {
     const [tab, setTab] = useState(0)
     const authedUser = useSelector(state => state.authedUser)
-    const answeredIds = useSelector(state => Object.keys(state.users[authedUser].answers))
+    const users = useSelector(state => state.users)
     const questionIds = useSelector(state => (
         Object.keys(state.questions).sort((a, b) => state.questions[b].timestamp - state.questions[a].timestamp)
     ))
+    const answeredIds = authedUser ? Object.keys(users[authedUser].answers) : []
 
     function getUnansweredIds(questionIds, answeredIds) {
         const unanswered = questionIds.filter(id => answeredIds.indexOf(id) === -1)

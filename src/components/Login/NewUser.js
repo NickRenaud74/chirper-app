@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Input, IconButton, Avatar, Button, TextField, Tooltip } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { useStyles } from '../styles/styles'
-import { saveCreateUser } from '../actions/users'
-import { setAuthedUser } from '../actions/authedUser'
+import { useStyles } from '../../styles/styles'
+import { saveCreateUser } from '../../actions/users'
+import { setAuthedUser } from '../../actions/authedUser'
 
 
 function NewUser({ setToDashboard, handleExpand, expanded }) {

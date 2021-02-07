@@ -10,10 +10,10 @@ import Nav from './Nav'
 import Leaderboard from './Leaderboard'
 import Dashboard from './Dashboard'
 import CardTemplate from './CardTemplate'
-import QuestionPoll from './QuestionPoll'
-import QuestionResults from './QuestionResults'
+import QuestionPoll from './Questions/QuestionPoll'
+import QuestionResults from './Questions/QuestionResults'
 import NewQuestion from './NewQuestion'
-import Login from './Login'
+import Login from './Login/Login'
 import PageNotFound from './PageNotFound'
 
 function App() {

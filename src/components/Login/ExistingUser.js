@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setAuthedUser } from '../actions/authedUser'
+import { setAuthedUser } from '../../actions/authedUser'
 import { Accordion, AccordionDetails, AccordionSummary, Typography, Select, MenuItem, ListItemText, Button } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { useStyles } from '../styles/styles'
+import { useStyles } from '../../styles/styles'
 
 function ExistingUser({ setToDashboard, handleExpand, expanded }) {
     const [userId, setUserId] = useState('')

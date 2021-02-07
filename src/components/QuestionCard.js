@@ -1,11 +1,23 @@
 import React, { Fragment } from 'react'
-import { useStyles } from '../styles/cardStyles'
-import { Link } from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import { useStyles } from '../styles/styles'
+import { useHistory } from 'react-router-dom'
 import { CardContent, CardActions, Button, Typography } from '@material-ui/core'
 
 function QuestionCard({ question }) {
-
+    const authedUser = useSelector(state => state.authedUser)
     const classes = useStyles()
+    const history = useHistory()
+
+    const getAllVotes = question.optionOne.votes.concat(question.optionTwo.votes)
+
+    function handleClick() {
+        if (getAllVotes.includes(authedUser)) {
+            history.push(`/questions/${question.id}/results`)
+        } else {
+            history.push(`/questions/${question.id}`)
+        }
+    }
 
     return (
         <Fragment>
@@ -21,8 +33,7 @@ function QuestionCard({ question }) {
                 <Button
                     className={classes.button}
                     variant='contained'
-                    component={Link}
-                    to={`/questions/${question.id}`}
+                    onClick={handleClick}
                 >
                     View Poll
                 </Button>

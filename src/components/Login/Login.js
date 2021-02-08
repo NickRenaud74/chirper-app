@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
 import { useStyles } from '../../styles/styles'
 import { Card, CardHeader, CardMedia } from '@material-ui/core'
-import logo from '../images/react-logo.png'
+import logo from '../../images/react-logo.png'
 import NewUser from './NewUser'
 import ExistingUser from './ExistingUser'
 

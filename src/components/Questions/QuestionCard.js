@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import {useSelector} from 'react-redux'
-import { useStyles } from '../styles/styles'
+import { useStyles } from '../../styles/styles'
 import { useHistory } from 'react-router-dom'
 import { CardContent, CardActions, Button, Typography } from '@material-ui/core'
 

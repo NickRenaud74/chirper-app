@@ -1,6 +1,6 @@
 import React from 'react'
 import { Typography, Paper, LinearProgress, Badge } from '@material-ui/core'
-import { useStyles } from '../styles/styles'
+import { useStyles } from '../../styles/styles'
 
 function Result({ option, percentage, votes, showBadge }) {
     const classes = useStyles()

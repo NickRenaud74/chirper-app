@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import { CardContent, Typography } from '@material-ui/core'
-import Result from '../Result'
+import Result from './Result'
 
 function QuestionResults({ question }) {
     const [userAnswer, setUserAnswer] = useState('')

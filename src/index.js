@@ -15,7 +15,7 @@ const generateClassName = createGenerateClassName()
 
 ReactDOM.render(
   <Provider store={store}>
-    <StylesProvider geneerateClassName={generateClassName}>
+    <StylesProvider generateClassName={generateClassName}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <App />

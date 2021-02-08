@@ -7,20 +7,21 @@ import middleware from './middleware'
 import { BrowserRouter } from 'react-router-dom'
 import './styles/index.css'
 import { theme } from './styles/theme'
-import { ThemeProvider, StylesProvider } from '@material-ui/core/styles'
+import { ThemeProvider, StylesProvider, createGenerateClassName } from '@material-ui/core/styles'
 import App from './components/App'
 
 const store = createStore(reducer, middleware)
+const generateClassName = createGenerateClassName()
 
 ReactDOM.render(
-  <StylesProvider>
-    <Provider store={store}>
+  <Provider store={store}>
+    <StylesProvider geneerateClassName={generateClassName}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </ThemeProvider>
-    </Provider>
-  </StylesProvider>,
+    </StylesProvider>
+    </Provider>,
   document.getElementById('root')
 );

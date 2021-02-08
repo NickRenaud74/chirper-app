@@ -13,14 +13,14 @@ import App from './components/App'
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(
-  <Provider store={store}>
-    <StylesProvider>
+  <StylesProvider>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </ThemeProvider>
-    </StylesProvider>
-  </Provider>,
+    </Provider>
+  </StylesProvider>,
   document.getElementById('root')
 );

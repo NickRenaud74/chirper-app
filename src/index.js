@@ -11,7 +11,9 @@ import { ThemeProvider, StylesProvider, createGenerateClassName } from '@materia
 import App from './components/App'
 
 const store = createStore(reducer, middleware)
-const generateClassName = createGenerateClassName()
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'p'
+})
 
 ReactDOM.render(
   <Provider store={store}>

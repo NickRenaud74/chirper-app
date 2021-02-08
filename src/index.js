@@ -6,6 +6,7 @@ import reducer from './reducers'
 import middleware from './middleware'
 import {BrowserRouter} from 'react-router-dom'
 import './styles/index.css';
+import './styles/styles'
 import { theme } from './styles/theme'
 import {ThemeProvider} from '@material-ui/core'
 import App from './components/App';

@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 import { Tab, Tabs, AppBar, Avatar, Toolbar, Typography, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom'
-import {useStyles} from '../styles/styles'
+import { useStyles } from '../styles/styles'
+import PropTypes from 'prop-types'
 
 function Nav({authedUser}) {
     const [tab, setTab] = useState(0)
@@ -52,6 +53,10 @@ function Nav({authedUser}) {
                 </Toolbar>
         </AppBar>
     )
+}
+
+Nav.propTypes = {
+    authedUser: PropTypes.string
 }
 
 export default Nav

@@ -1,6 +1,6 @@
 import React from 'react'
-
-import {Redirect, Route} from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 function PrivateRoute({children, authedUser, ...rest}) {
     return (
@@ -18,4 +18,8 @@ function PrivateRoute({children, authedUser, ...rest}) {
     )
 }
 
+PrivateRoute.propTypes = {
+    children: PropTypes.node,
+    authedUser: PropTypes.string.isRequired
+}
 export default PrivateRoute

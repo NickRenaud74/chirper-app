@@ -10,8 +10,7 @@ import Nav from './Nav'
 import Leaderboard from './Leaderboard'
 import Dashboard from './Dashboard'
 import CardTemplate from './CardTemplate'
-import QuestionPoll from './Questions/QuestionPoll'
-import QuestionResults from './Questions/QuestionResults'
+import QuestionDetails from './Questions/QuestionDetails'
 import NewQuestion from './NewQuestion'
 import Login from './Login/Login'
 import PageNotFound from './PageNotFound'
@@ -43,11 +42,8 @@ function App() {
           <PrivateRoute exact path='/leaderboard' authedUser={authedUser}>
             <Leaderboard />
           </PrivateRoute>
-          <PrivateRoute exact path='/questions/:questionId' authedUser={authedUser}>
-            <CardTemplate component={QuestionPoll} />
-          </PrivateRoute>
-          <PrivateRoute exact path='/questions/:questionId/results' authedUser={authedUser}>
-            <CardTemplate component={QuestionResults} />
+          <PrivateRoute exact path='/questions/:question_id' authedUser={authedUser}>
+            <CardTemplate component={QuestionDetails} />
           </PrivateRoute>
           <PrivateRoute path='*' authedUser={authedUser}>
             <PageNotFound />

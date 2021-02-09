@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { useStyles } from '../../styles/styles'
 import { saveCreateUser } from '../../actions/users'
 import { setAuthedUser } from '../../actions/authedUser'
+import PropTypes from 'prop-types'
 
 
 function NewUser({ setToDashboard, handleExpand, expanded }) {
@@ -85,6 +86,12 @@ function NewUser({ setToDashboard, handleExpand, expanded }) {
             </form>
         </Accordion>
     )
+}
+
+NewUser.propTypes = {
+    setToDashboard: PropTypes.func,
+    handleExpand: PropTypes.func,
+    expanded: PropTypes.bool
 }
 
 export default NewUser

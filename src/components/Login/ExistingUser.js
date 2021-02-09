@@ -4,6 +4,7 @@ import { setAuthedUser } from '../../actions/authedUser'
 import { Accordion, AccordionDetails, AccordionSummary, Typography, Select, MenuItem, ListItemText, Button } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { useStyles } from '../../styles/styles'
+import PropTypes from 'prop-types'
 
 function ExistingUser({ setToDashboard, handleExpand, expanded }) {
     const [userId, setUserId] = useState('')
@@ -49,6 +50,12 @@ function ExistingUser({ setToDashboard, handleExpand, expanded }) {
             </AccordionDetails>
         </Accordion>
     )
+}
+
+ExistingUser.propTypes = {
+    setToDashboard: PropTypes.func,
+    handleExpand: PropTypes.func,
+    expanded: PropTypes.bool
 }
 
 export default ExistingUser

@@ -20,6 +20,6 @@ function PrivateRoute({children, authedUser, ...rest}) {
 
 PrivateRoute.propTypes = {
     children: PropTypes.node,
-    authedUser: PropTypes.string.isRequired
+    authedUser: PropTypes.string
 }
 export default PrivateRoute

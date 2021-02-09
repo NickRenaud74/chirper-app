@@ -91,7 +91,7 @@ function NewUser({ setToDashboard, handleExpand, expanded }) {
 NewUser.propTypes = {
     setToDashboard: PropTypes.func,
     handleExpand: PropTypes.func,
-    expanded: PropTypes.bool
+    expanded: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 }
 
 export default NewUser

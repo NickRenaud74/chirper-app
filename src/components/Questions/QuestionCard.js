@@ -1,22 +1,15 @@
 import React, { Fragment } from 'react'
-import {useSelector} from 'react-redux'
 import { useStyles } from '../../styles/styles'
 import { useHistory } from 'react-router-dom'
 import { CardContent, CardActions, Button, Typography } from '@material-ui/core'
+import PropTypes from 'prop-types'
 
 function QuestionCard({ question }) {
-    const authedUser = useSelector(state => state.authedUser)
     const classes = useStyles()
     const history = useHistory()
 
-    const getAllVotes = question.optionOne.votes.concat(question.optionTwo.votes)
-
     function handleClick() {
-        if (getAllVotes.includes(authedUser)) {
-            history.push(`/questions/${question.id}/results`)
-        } else {
-            history.push(`/questions/${question.id}`)
-        }
+        history.push(`/questions/${question.id}`)
     }
 
     return (
@@ -40,6 +33,10 @@ function QuestionCard({ question }) {
             </CardActions>
         </Fragment>
     )
+}
+
+QuestionCard.propTypes = {
+    question: PropTypes.object.isRequired
 }
 
 export default QuestionCard

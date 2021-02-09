@@ -3,13 +3,12 @@ import {useDispatch} from 'react-redux'
 import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Button } from '@material-ui/core'
 import { useStyles } from '../../styles/styles'
 import { saveQuestionAnswer } from '../../actions/questions'
-import { useHistory } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 function QuestionPoll({ question }) {
     const [answer, setAnswer] = useState('')
     const classes = useStyles()
     const dispatch = useDispatch()
-    const history = useHistory()
 
     function handleChange(e) {
         setAnswer(e.target.value)
@@ -18,7 +17,6 @@ function QuestionPoll({ question }) {
     function handleSubmit(e) {
         e.preventDefault()
         dispatch(saveQuestionAnswer({ answer, qid: question.id }))
-        history.push(`/questions/${question.id}/results`)
     }
 
     return (
@@ -35,6 +33,10 @@ function QuestionPoll({ question }) {
             </FormControl>
         </form>
     )
+}
+
+QuestionPoll.propTypes = {
+    question: PropTypes.object.isRequired
 }
 
 export default QuestionPoll

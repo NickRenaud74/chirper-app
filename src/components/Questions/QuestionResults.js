@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import { CardContent, Typography } from '@material-ui/core'
 import Result from './Result'
+import PropTypes from 'prop-types'
 
 function QuestionResults({ question }) {
     const [userAnswer, setUserAnswer] = useState('')
@@ -43,6 +44,10 @@ function QuestionResults({ question }) {
             />
         </CardContent >
     )
+}
+
+QuestionResults.propTypes = {
+    question: PropTypes.object.isRequired
 }
 
 export default QuestionResults

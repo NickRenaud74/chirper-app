@@ -1,6 +1,7 @@
 import React from 'react'
 import { Typography, Paper, LinearProgress, Badge } from '@material-ui/core'
 import { useStyles } from '../../styles/styles'
+import PropTypes from 'prop-types'
 
 function Result({ option, percentage, votes, showBadge }) {
     const classes = useStyles()
@@ -17,4 +18,10 @@ function Result({ option, percentage, votes, showBadge }) {
     )
 }
 
+Result.propTypes = {
+    option: PropTypes.string,
+    percentage: PropTypes.number,
+    votes: PropTypes.number,
+    showBadge: PropTypes.bool
+}
 export default Result

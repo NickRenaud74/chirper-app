@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useStyles } from '../styles/styles'
 import { Card, CardHeader, Avatar, Grid } from '@material-ui/core'
+import PageNotFound from './PageNotFound'
+import PropTypes from 'prop-types'
 
 function CardTemplate({ id, component }) {
-    const { questionId } = useParams()
+    const { question_id } = useParams()
 
     if (!id) {
-        id = questionId
+        id = question_id
     }
 
     const questions = useSelector(state => state.questions)
@@ -16,6 +18,10 @@ function CardTemplate({ id, component }) {
     const question = questions[id]
     const Component = component
     const classes = useStyles()
+
+    if (!question) {
+       return <PageNotFound />
+    }
 
     return (
         <Card raised className={classes.root}>
@@ -34,6 +40,10 @@ function CardTemplate({ id, component }) {
         </Card>
 
     )
+}
+CardTemplate.propTypes = {
+    id: PropTypes.string,
+    component: PropTypes.element
 }
 
 export default CardTemplate

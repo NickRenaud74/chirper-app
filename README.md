@@ -7,6 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 The classic would you rather game built into an app. Allows users to answer would you rather questions, create their own questions and view their position on the leaderboard.  
 To access the main functionality of the app a user must be logged in either by creating their own account or using an existing account.
 
+Live: [https://would-you-rather-nrenaud74.netlify.app/](https://would-you-rather-nrenaud74.netlify.app/)
+
 ## Setup
 
 To install project dependencies run `npm install` in the CLI.
